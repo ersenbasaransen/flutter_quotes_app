@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatelessWidget {
-  const SecondScreen({Key? key}) : super(key: key);
+  String quoteText;
+  String authorName;
+
+  SecondScreen({Key? key, required this.quoteText, required this.authorName})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            body: ElevatedButton(
-                child: const Text("Go back"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                })));
+            appBar: AppBar(),
+            body: Column(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child:
+                        Text(quoteText, style: const TextStyle(fontSize: 20))),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Text("- $authorName",
+                          style: const TextStyle(fontSize: 15))),
+                )
+              ],
+            )));
   }
 }
