@@ -50,12 +50,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () async {
-                      var url = Uri.parse('https://api.quotable.io/random');
+                      // var url = Uri.parse('https://api.quotable.io/random');
+                      // var response = await http.get(url);
+
+                      // var data = jsonDecode(response.body);
+                      // quoteText = data['content'];
+                      // authorName = data['author'];
+
+                      var url = Uri.parse('https://zenquotes.io/api/quotes');
                       var response = await http.get(url);
 
                       var data = jsonDecode(response.body);
-                      quoteText = data['content'];
-                      authorName = data['author'];
+                      quoteText = data[0]['q'];
+                      authorName = data[0]['a'];
 
                       setState(() {});
                     },
